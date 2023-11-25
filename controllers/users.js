@@ -5,6 +5,24 @@ import User from "../models/user.js";
 const JWT_SECRET = "jwt-secret";
 
 
+export const updateUser = async(req,res) =>
+{
+  const userData = req.body;
+  console.log(userData);
+  const id = req.params.id;
+
+  await User.findOneAndUpdate({_id:id},userData);
+  res.status(200).json({message : "User deleted successfully"});
+}
+
+
+export const deleteUser = async(req,res) =>
+{
+  const id = req.params.id;
+  await User.findByIdAndDelete({_id:id});
+  res.status(200).json({message : "User deleted successfully"});
+}
+
 
 export const userDetails = async(req,res)=>
 {

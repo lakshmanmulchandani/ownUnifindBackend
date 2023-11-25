@@ -9,7 +9,7 @@ orgId: {type:Number, default:388},
   designation: {type: String, default:"Student"},
   phoneNO: {type: String},
   about: {type: String},
-  joinedOn: {type: Date, default: moment().toISOString()},
+  joinedOn: {type: Date, default: new Date()},
 });
 
 export default mongoose.model("User", userSchema);
