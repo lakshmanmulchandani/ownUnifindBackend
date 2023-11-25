@@ -37,7 +37,7 @@ const PORT = process.env.PORT || 5000;
 const db = "mongodb+srv://lostAndFound:cK0AzTcTOQT3SaEQ@cluster0.sffd2px.mongodb.net/?retryWrites=true&w=majority"
 
 mongoose
-  .connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect(db)
   .then(() =>
     app.listen(PORT, () => {
       console.log(`server running on port ${PORT}`);
