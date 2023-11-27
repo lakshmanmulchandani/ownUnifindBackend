@@ -6,6 +6,7 @@ const itemSchema = mongoose.Schema(
     itemTag: { type: String, required: true },
     user: {
       type: mongoose.Types.ObjectId,
+      ref: 'User',
       required: true,
     },
     type: { type: String, enum: ["lost", "found"], required: true },
@@ -15,14 +16,22 @@ const itemSchema = mongoose.Schema(
       required: true,
       default: "unresolved",
     },
+    resolvedBy: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User',
+    },
+    resolvedOn:{
+      type: Date
+    },
     location: { type: String, required: true },
     imageSrc: { type: String, required: true },
     comments: [
       {
-        itemBody: String,
+        comment: String,
         user: {
           type: mongoose.Types.ObjectId,
           required: true,
+          ref: "User"
         },
         commentedOn: { type: Date, default: Date.now },
       },

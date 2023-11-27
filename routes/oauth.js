@@ -13,7 +13,7 @@ router.get('/google/callback',
   (req, res) => {
     // Generate a JWT token with user information
     const user = req.user
- 
+    console.log(user)
     const token = Jwt.sign({ google: user.google , userName:user.userName, id: user._id }, "jwt-secret");
 
     if(user.orgId===388)

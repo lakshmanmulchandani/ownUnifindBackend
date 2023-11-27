@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.send("This is Lost and Found API");
 });
 app.use("/user", userRoutes);
-app.use("/items", items);
+app.use("/item", items);
 app.use("/oauth",oauth)
 
 const PORT = process.env.PORT || 5000;
