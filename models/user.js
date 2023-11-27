@@ -8,8 +8,7 @@ orgId: {type:Number, default:388},
   password: {type: String},
   designation: {type: String, default:"Student"},
   phoneNO: {type: String},
-  about: {type: String},
-  joinedOn: {type: Date, default: new Date()},
+  about: {type: String}
 });
 
 export default mongoose.model("User", userSchema);

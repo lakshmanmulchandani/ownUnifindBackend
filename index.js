@@ -7,6 +7,7 @@ import items from "./routes/items.js";
 import passport from './passport.js';
 import session from 'express-session';
 import oauth from "./routes/oauth.js"
+import {db} from "./constants.js"
 
 
 const app = express();
@@ -34,7 +35,7 @@ app.use("/oauth",oauth)
 const PORT = process.env.PORT || 5000;
 
 
-const db = "mongodb+srv://lostAndFound:cK0AzTcTOQT3SaEQ@cluster0.sffd2px.mongodb.net/?retryWrites=true&w=majority"
+
 
 mongoose
   .connect(db)

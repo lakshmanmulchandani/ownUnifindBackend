@@ -159,7 +159,6 @@ export const getTags = async (req, res)=>{
   console.log(q)
   try{
     const tags = await Tag.find({ name: { "$regex": q, "$options": "i" }})
-    console.log(tags)
     res.status(200).json({
       tags: tags,
       message: "OK",

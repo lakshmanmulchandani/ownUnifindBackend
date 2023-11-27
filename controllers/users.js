@@ -1,26 +1,51 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/user.js";
-
-const JWT_SECRET = "jwt-secret";
+import { JWT_SECRET } from "../constants.js";
 
 
 export const updateUser = async(req,res) =>
 {
-  const userData = req.body;
-  console.log(userData);
-  const id = req.params.id;
+  try {
+    const userData = req.body;
+    console.log(userData);
+    const id = req.params.id;
+  
+    await User.findOneAndUpdate({_id:id},userData);
+    res.status(200).json({message : "User deleted successfully"});
+  } catch (error) {
+    console.log(error);
+  }
 
-  await User.findOneAndUpdate({_id:id},userData);
-  res.status(200).json({message : "User deleted successfully"});
+}
+
+
+export const getUser = async(req,res) =>
+{
+  try {
+    const id  = req.userId;
+   const user =  await User.findOne({_id:id});
+   console.log("working")
+    res.status(200).json({message : "User found",user});
+    
+  } catch (error) {
+    console.log(error)
+  }
+
 }
 
 
 export const deleteUser = async(req,res) =>
 {
-  const id = req.params.id;
-  await User.findByIdAndDelete({_id:id});
-  res.status(200).json({message : "User deleted successfully"});
+  try {
+    const id = req.params.id;
+    await User.findByIdAndDelete({_id:id});
+    res.status(200).json({message : "User deleted successfully"});
+    
+  } catch (error) {
+    console.log(error)
+  }
+
 }
 
 
@@ -77,10 +102,14 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
   const {userEmail, password} = req.body;
+  
   try {
     const existinguser = await User.findOne({userEmail});
+ 
     if (!existinguser) {
-      return res.status(404).json({message: "User don't Exist."});
+      console.log("Something went wrong")
+     
+      return res.status(400).json({message: "User doesn't Exist."});
     }
 
     const password_check = await bcrypt.compare(password, existinguser.password);
