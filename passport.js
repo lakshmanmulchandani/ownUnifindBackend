@@ -5,6 +5,10 @@ import { Strategy as FacebookStrategy } from 'passport-facebook';
 // import { Strategy as AppleStrategy } from '@apple/auth-provider-express';
 // import {GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,backend_url} from "./constants.js"
 
+const GOOGLE_CLIENT_ID = "360421334611-8tbsqbnufgmep726qtsjh247kr8rjjjv.apps.googleusercontent.com"
+ const GOOGLE_CLIENT_SECRET = "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"
+
+
 import User from './models/user.js';
 
 passport.serializeUser((user, done) => {
