@@ -26,14 +26,15 @@ passport.deserializeUser((id, done) => {
 
 // const FACEBOOK_APP_ID = "156929757483476"
 // const FACEBOOK_APP_SECRET = "ec3d81f633ea419e8f8308c2008287c7"
-const callback = backend_url + "/oauth/google/callback"
+// const callback = backend_url + "/oauth/google/callback"
+
 
 // Google Strategy
 passport.use(new GoogleStrategy({
 
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: callback, 
+    callbackURL: "https://unifind-backend.onrender.com/oauth/google/callback", 
     userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', 
     scope: ['profile', 'email'], 
   
