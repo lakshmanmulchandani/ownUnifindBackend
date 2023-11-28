@@ -2,9 +2,8 @@
 import express from 'express';
 import passport from 'passport';
 import  Jwt  from 'jsonwebtoken';
-// import { frontend_url } from '../constants.js';
+import { frontend_url } from '../constants.js';
 import { JWT_SECRET } from '../constants.js';
-const frontend_url = "https://unifind.netlify.app"
 
 const router = express.Router();
 
