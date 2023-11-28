@@ -3,7 +3,7 @@ import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { Strategy as FacebookStrategy } from 'passport-facebook';
 // import { Strategy as AppleStrategy } from '@apple/auth-provider-express';
-import {GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,backend_url} from "./constants.js"
+// import {GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,backend_url} from "./constants.js"
 
 import User from './models/user.js';
 
@@ -24,8 +24,8 @@ passport.deserializeUser((id, done) => {
 
 
 
-// const FACEBOOK_APP_ID = "156929757483476"
-// const FACEBOOK_APP_SECRET = "ec3d81f633ea419e8f8308c2008287c7"
+const FACEBOOK_APP_ID = "156929757483476"
+const FACEBOOK_APP_SECRET = "ec3d81f633ea419e8f8308c2008287c7"
 // const callback = backend_url + "/oauth/google/callback"
 
 
