@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/user.js";
 import { JWT_SECRET } from "../constants.js";
+import Item from "../models/item.js";
 
 
 export const updateUser = async(req,res) =>
@@ -39,7 +40,11 @@ export const deleteUser = async(req,res) =>
 {
   try {
     const id = req.params.id;
-    await User.findByIdAndDelete({_id:id});
+ 
+    const user = await User.findOne({_id:id})
+    const itemIdArray = user.items;
+    // await User.findByIdAndDelete({_id:id});
+    await Item.deleteMany({ _id: { $in: itemIdArray } });
     res.status(200).json({message : "User deleted successfully"});
     
   } catch (error) {

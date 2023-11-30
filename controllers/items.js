@@ -10,6 +10,7 @@ export const createPost = async (req, res) => {
   const itemBody = req.body;
   const userId = req.userId;
   const userdata = await User.findById(userId);
+
   const newItem = new Item({ ...itemBody, user: userId });
   try {
     await newItem.save();
@@ -23,6 +24,14 @@ export const createPost = async (req, res) => {
       })
       await newtag.save();
     }
+    const itemId = newItem._id;
+    await User.findOneAndUpdate(
+      { _id: userId },
+      { $push: { items: itemId } },
+      { new: true } // Set new to true to return the updated document
+    );
+
+
     res.status(200).json({
       message: "Created a post successfully",
       post: newItem,
