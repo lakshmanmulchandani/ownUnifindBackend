@@ -12,7 +12,7 @@ export const updateUser = async(req,res) =>
     const id = req.params.id;
   
     await User.findOneAndUpdate({_id:id},userData);
-    res.status(200).json({message : "User deleted successfully"});
+    res.status(200).json({message : "User updated successfully"});
   } catch (error) {
     console.log(error);
   }
