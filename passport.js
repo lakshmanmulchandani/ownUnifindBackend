@@ -26,7 +26,8 @@ passport.deserializeUser((id, done) => {
 
 // const FACEBOOK_APP_ID = "156929757483476"
 // const FACEBOOK_APP_SECRET = "ec3d81f633ea419e8f8308c2008287c7"
-const callback = "https://unifind-backend.onrender.com/oauth/google/callback"
+
+const callback = "https://ownunifindbackend.onrender.com/oauth/google/callback"
  const GOOGLE_CLIENT_ID = "360421334611-8tbsqbnufgmep726qtsjh247kr8rjjjv.apps.googleusercontent.com"
  const GOOGLE_CLIENT_SECRET = "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"
 
